@@ -1,0 +1,31 @@
+---
+title: "Untitled"
+output: html_document
+---
+#Eight Queen Solution Explicit method using R
+
+```{r,echo=FALSE, warning=FALSE, message=FALSE }
+suppressMessages(source('~/Downloads/eight queen.R'))
+rm(list=ls()[-grep("queen", ls())])
+
+
+
+```
+
+```{r, echo=F, warning=FALSE, comment=F, message=FALSE}
+library(reshape2)
+library(ggplot2)
+lapply(eight.queen.solutions, function(x){
+mx <- matrix(rep(c('White', 'Black'), 8), nrow=8, ncol=8)
+mx.1 <- matrix(rep(c('Black', 'White'), 4), nrow=4, ncol=4)
+mx[,(1:4)*2]<-mx.1
+rm(mx.1)
+mx[x==1]<-"Queen"  
+ggplot(melt(mx), aes(x=Var1, y=Var2, fill=value))+  geom_tile() +
+  xlab("")+
+  ylab("")+
+  scale_fill_manual(values=c("black", "red",'white'))+
+  scale_x_discrete(breaks=(1:8),labels=LETTERS[1:8])+
+  scale_y_discrete(breaks=(1:8),labels=1:8)})
+```
+
