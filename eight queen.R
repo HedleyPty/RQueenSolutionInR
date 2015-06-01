@@ -31,7 +31,7 @@ n.1<-0
 
 # I create a loop from 1 to 8! (using the function gamma(9))
 system.time(
-for (m inz1:gamma(9)){
+for (m in 1:gamma(9)){
   n.1 <- n.1+1
 # At the beginning of the loop I create a data frame with 8 variables and 8 rows
 # each row has 0 values in each row
